@@ -1,0 +1,119 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <title>My Final AR Cards</title>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+    
+    <style>
+      body { margin: 0; overflow: hidden; font-family: sans-serif; }
+      #ui-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 1000; pointer-events: none; }
+      .scan-frame { width: 250px; height: 350px; border: 2px solid white; border-radius: 20px; display: flex; justify-content: center; align-items: center; text-align: center; background: rgba(0, 0, 0, 0.2); box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+      .scan-text { color: white; font-weight: bold; text-shadow: 1px 1px 4px rgba(0,0,0,0.8); }
+      .scan-text h1 { margin: 0; font-size: 32px; }
+      .scan-text p { margin: 5px 0 0 0; font-size: 16px; }
+      #tap-to-unmute { position: absolute; bottom: 50px; background: rgba(0,0,0,0.6); color: white; padding: 10px 20px; border-radius: 20px; font-size: 14px; pointer-events: auto; }
+    </style>
+  </head>
+  <body>
+    
+    <div id="ui-overlay">
+      <div class="scan-frame">
+        <div class="scan-text">
+          <h1>AR SCAN</h1>
+          <p>สแกนการ์ด</p>
+        </div>
+      </div>
+      <div id="tap-to-unmute">แตะหน้าจอ 1 ครั้งเพื่อเปิดเสียง 👆</div>
+    </div>
+
+    <a-scene mindar-image="imageTargetSrc: ./targets.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      
+      <!-- โหลดวิดีโอทั้ง 9 ตัว (แก้ video7 เป็น .mp4 แล้ว) -->
+      <a-assets>
+        <video id="vid1" src="./video1.mp4" playsinline webkit-playsinline loop muted></video>
+        <video id="vid2" src="./video2.mp4" playsinline webkit-playsinline loop muted></video>
+        <video id="vid3" src="./video3.mp4" playsinline webkit-playsinline loop muted></video>
+        <video id="vid4" src="./video4.mp4" playsinline webkit-playsinline loop muted></video>
+        <video id="vid5" src="./video5.mp4" playsinline webkit-playsinline loop muted></video>
+        <video id="vid6" src="./video6.mp4" playsinline webkit-playsinline loop muted></video>
+        <video id="vid7" src="./video7.mp4" playsinline webkit-playsinline loop muted></video>
+        <video id="vid8" src="./video8.mp4" playsinline webkit-playsinline loop muted></video>
+        <video id="vid9" src="./video9.mp4" playsinline webkit-playsinline loop muted></video>
+      </a-assets>
+
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+      
+      <!-- รูปที่ 0, 1, 2, 3 -> คลิป 1 -->
+      <a-entity mindar-image-target="targetIndex: 0" class="my-card" data-video-id="#vid1"><a-video src="#vid1" position="0 0 0" height="1.4" width="1"></a-video></a-entity>
+      <a-entity mindar-image-target="targetIndex: 1" class="my-card" data-video-id="#vid1"><a-video src="#vid1" position="0 0 0" height="1.4" width="1"></a-video></a-entity>
+      <a-entity mindar-image-target="targetIndex: 2" class="my-card" data-video-id="#vid1"><a-video src="#vid1" position="0 0 0" height="1.4" width="1"></a-video></a-entity>
+      <a-entity mindar-image-target="targetIndex: 3" class="my-card" data-video-id="#vid1"><a-video src="#vid1" position="0 0 0" height="1.4" width="1"></a-video></a-entity>
+
+      <!-- รูปที่ 4 -> คลิป 3 -->
+      <a-entity mindar-image-target="targetIndex: 4" class="my-card" data-video-id="#vid3"><a-video src="#vid3" position="0 0 0" height="1.4" width="1"></a-video></a-entity>
+
+      <!-- รูปที่ 5 -> คลิป 2 -->
+      <a-entity mindar-image-target="targetIndex: 5" class="my-card" data-video-id="#vid2"><a-video src="#vid2" position="0 0 0" height="1.4" width="1"></a-video></a-entity>
+
+      <!-- รูปที่ 6 -> คลิป 4 -->
+      <a-entity mindar-image-target="targetIndex: 6" class="my-card" data-video-id="#vid4"><a-video src="#vid4" position="0 0 0" height="1.4" width="1"></a-video></a-entity>
+
+      <!-- รูปที่ 7, 8, 9 -> คลิป 5 -->
+      <a-entity mindar-image-target="targetIndex: 7" class="my-card" data-video-id="#vid5"><a-video src="#vid5" position="0 0 0" height="1.4" width="1"></a-video></a-entity>
+      <a-entity mindar-image-target="targetIndex: 8" class="my-card" data-video-id="#vid5"><a-video src="#vid5" position="0 0 0" height="1.4" width="1"></a-video></a-entity>
+      <a-entity mindar-image-target="targetIndex: 9" class="my-card" data-video-id="#vid5"><a-video src="#vid5" position="0 0 0" height="1.4" width="1"></a-video></a-entity>
+
+      <!-- รูปที่ 10 -> คลิป 6 -->
+      <a-entity mindar-image-target="targetIndex: 10" class="my-card" data-video-id="#vid6"><a-video src="#vid6" position="0 0 0" height="1.4" width="1"></a-video></a-entity>
+
+      <!-- รูปที่ 11, 12, 13, 14 -> คลิป 7 -->
+      <a-entity mindar-image-target="targetIndex: 11" class="my-card" data-video-id="#vid7"><a-video src="#vid7" position="0 0 0" height="1.4" width="1"></a-video></a-entity>
+      <a-entity mindar-image-target="targetIndex: 12" class="my-card" data-video-id="#vid7"><a-video src="#vid7" position="0 0 0" height="1.4" width="1"></a-video></a-entity>
+      <a-entity mindar-image-target="targetIndex: 13" class="my-card" data-video-id="#vid7"><a-video src="#vid7" position="0 0 0" height="1.4" width="1"></a-video></a-entity>
+      <a-entity mindar-image-target="targetIndex: 14" class="my-card" data-video-id="#vid7"><a-video src="#vid7" position="0 0 0" height="1.4" width="1"></a-video></a-entity>
+
+      <!-- รูปที่ 15, 16, 17, 18 -> คลิป 8 -->
+      <a-entity mindar-image-target="targetIndex: 15" class="my-card" data-video-id="#vid8"><a-video src="#vid8" position="0 0 0" height="1.4" width="1"></a-video></a-entity>
+      <a-entity mindar-image-target="targetIndex: 16" class="my-card" data-video-id="#vid8"><a-video src="#vid8" position="0 0 0" height="1.4" width="1"></a-video></a-entity>
+      <a-entity mindar-image-target="targetIndex: 17" class="my-card" data-video-id="#vid8"><a-video src="#vid8" position="0 0 0" height="1.4" width="1"></a-video></a-entity>
+      <a-entity mindar-image-target="targetIndex: 18" class="my-card" data-video-id="#vid8"><a-video src="#vid8" position="0 0 0" height="1.4" width="1"></a-video></a-entity>
+
+      <!-- รูปที่ 19, 20, 21 -> คลิป 9 -->
+      <a-entity mindar-image-target="targetIndex: 19" class="my-card" data-video-id="#vid9"><a-video src="#vid9" position="0 0 0" height="1.4" width="1"></a-video></a-entity>
+      <a-entity mindar-image-target="targetIndex: 20" class="my-card" data-video-id="#vid9"><a-video src="#vid9" position="0 0 0" height="1.4" width="1"></a-video></a-entity>
+      <a-entity mindar-image-target="targetIndex: 21" class="my-card" data-video-id="#vid9"><a-video src="#vid9" position="0 0 0" height="1.4" width="1"></a-video></a-entity>
+
+    </a-scene>
+
+    <script>
+      const tapPrompt = document.querySelector('#tap-to-unmute');
+      const uiOverlay = document.querySelector('#ui-overlay');
+      const allCards = document.querySelectorAll('.my-card');
+      const allVideos = document.querySelectorAll('video');
+
+      document.body.addEventListener('click', () => {
+        allVideos.forEach(v => v.muted = false);
+        if (tapPrompt) tapPrompt.style.display = 'none'; 
+      }, { once: true }); 
+
+      allCards.forEach((card) => {
+        const videoId = card.getAttribute('data-video-id');
+        const vid = document.querySelector(videoId);
+
+        card.addEventListener("targetFound", () => {
+          uiOverlay.style.display = 'none';
+          allVideos.forEach(v => { v.pause(); v.currentTime = 0; }); 
+          vid.play();
+        });
+
+        card.addEventListener("targetLost", () => {
+          vid.pause();
+          vid.currentTime = 0; 
+          uiOverlay.style.display = 'flex';
+        });
+      });
+    </script>
+  </body>
+</html>
